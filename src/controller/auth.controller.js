@@ -1,21 +1,21 @@
 const express = require('express')
 const router = express.Router()
-const User=require("../model/auth.model.js")
+const User = require("../model/auth.model.js")
 
 router.post('/login', (req, res) => {
-    const {  email, password } = req.body
-       User.findOne({email:email},(err,user)=>{
-           if(user){
-                if(password===user.password){
-                  console.log("login successfull")
-                    res.send({ message:"Login Succesfully",user:user})
-                }else{
-                    res.send({message:"Invalid Password"})
-                }
-           }else{
-            res.send({message:"User Not Regitered "})
-           }
-       })
+  const { email, password } = req.body
+  User.findOne({ email: email }, (err, user) => {
+    if (user) {
+      if (password === user.password) {
+        console.log("login successfull")
+        res.send({ message: "Login Succesfully", user: user })
+      } else {
+        res.send({ message: "Invalid Password" })
+      }
+    } else {
+      res.send({ message: "User Not Regitered " })
+    }
+  })
 })
 router.post('/register', (req, res) => {
   const { name, email, password } = req.body
@@ -50,11 +50,11 @@ router.get('/getuser', async (req, res) => {
 
 //  ------------delete user by admin controller-----------
 
-router.delete('/:id',async (req, res) => {
-  User.deleteOne({_id:req.params.id}).then(()=>{
-   res.send("user deleted")
+router.delete('/:id', async (req, res) => {
+  User.deleteOne({ _id: req.params.id }).then(() => {
+    res.send("user deleted")
   }).catch((err) => {
-   res.send("An error Occured")
+    res.send("An error Occured")
   })
 })
 

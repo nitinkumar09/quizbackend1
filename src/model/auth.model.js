@@ -4,12 +4,12 @@ const quizAttemptedSchema = new mongoose.Schema({
   quizResult: [],
 });
 const userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password: String,
-    Points:Number,
-    quizAttempted: [quizAttemptedSchema],
-  })
-  const User = new mongoose.model('User', userSchema)
+  name: String,
+  email: String,
+  password: String,
+  Points: Number,
+  quizAttempted: [quizAttemptedSchema],
+})
+const User = new mongoose.model('User', userSchema)
 
-  module.exports=User
+module.exports = User

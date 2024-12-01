@@ -17,4 +17,4 @@ const postQuizSchema = new mongoose.Schema({
 
 const PostQuiz = mongoose.model("PostQuiz", postQuizSchema);
 
-module.exports=PostQuiz
+module.exports = PostQuiz
